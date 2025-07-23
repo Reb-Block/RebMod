@@ -19,12 +19,12 @@ title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.Parent = frame
 
-local inputBox = Instance.new("Press key...")
+local inputBox = Instance.new("TextBox")
 inputBox.Size = UDim2.new(0.8, 0, 0, 30)
 inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
-inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 inputBox.PlaceholderText = "Press key..."
 inputBox.Text = ""
+inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 inputBox.ClearTextOnFocus = false
 inputBox.Parent = frame
