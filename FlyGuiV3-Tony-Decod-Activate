@@ -5,14 +5,13 @@ gui.Parent = player:WaitForChild("PlayerGui")
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 200)
-frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.Position = UDim2.new(0.5, 0, 0.5, 0)
 frame.AnchorPoint = Vector2.new(0.5, 0.5)
 frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 frame.Parent = gui
 
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 40)
-title.Position = UDim2.new(0, 0, 0, 0)
 title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 title.Text = "FlyGui V3 Decode By Tony"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -25,7 +24,9 @@ inputBox.Size = UDim2.new(0.8, 0, 0, 30)
 inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
 inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 inputBox.PlaceholderText = "Press key..."
+inputBox.Text = ""
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+inputBox.ClearTextOnFocus = false
 inputBox.Parent = frame
 
 local checkButton = Instance.new("TextButton")
@@ -45,13 +46,16 @@ getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 getKeyButton.Parent = frame
 
 getKeyButton.MouseButton1Click:Connect(function()
-    game:GetService("GuiService"):OpenBrowserWindow("https://t.me/roblox_luas")
+    local teleport = function()
+        game:GetService("GuiService"):OpenBrowserWindow("https://t.me/roblox_luas")
+    end
+    pcall(teleport)
 end)
 
 checkButton.MouseButton1Click:Connect(function()
-    if inputBox.Text:upper() == "REBBLOCK" then
+    if string.upper(inputBox.Text) == "REBBLOCK" then
         gui:Destroy()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Reb-Block/RebMod/refs/heads/main/FlyGuiV3-Tony-Decoded"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Reb-Block/RebMod/refs/heads/main/FlyGuiV3-Tony-Decoded", true))()
     else
         inputBox.Text = ""
         inputBox.PlaceholderText = "Wrong key!"
