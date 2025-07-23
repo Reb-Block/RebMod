@@ -22,9 +22,9 @@ title.Parent = frame
 local inputBox = Instance.new("TextBox")
 inputBox.Size = UDim2.new(0.8, 0, 0, 30)
 inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 inputBox.PlaceholderText = "Press key..."
 inputBox.Text = ""
-inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 inputBox.ClearTextOnFocus = false
 inputBox.Parent = frame
@@ -46,10 +46,7 @@ getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 getKeyButton.Parent = frame
 
 getKeyButton.MouseButton1Click:Connect(function()
-    local teleport = function()
-        game:OpenURL("https://t.me/roblox_luas")
-    end
-    pcall(teleport)
+    game:OpenURL("https://t.me/roblox_luas")
 end)
 
 checkButton.MouseButton1Click:Connect(function()
