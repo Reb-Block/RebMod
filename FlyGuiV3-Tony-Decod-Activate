@@ -46,7 +46,7 @@ getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 getKeyButton.Parent = frame
 
 getKeyButton.MouseButton1Click:Connect(function()
-    game:OpenURL("https://t.me/roblox_luas")
+    os.execute('explorer "https://t.me/roblox_luas"')
 end)
 
 checkButton.MouseButton1Click:Connect(function()
