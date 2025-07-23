@@ -4,11 +4,11 @@ local gui = Instance.new("ScreenGui")
 gui.Name = "FlyGuiV3"
 gui.Parent = player:WaitForChild("PlayerGui")
 
--- Основной фрейм
+-- Основной фрейм для проверки ключа (центрированный)
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 200)
-frame.Position = UDim2.new(0.5, -150, 0.5, -100)
-frame.AnchorPoint = Vector2.new(0.5, 0.5)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)  -- Центр экрана
+frame.AnchorPoint = Vector2.new(0.5, 0.5)  -- Важно для точного центрирования
 frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 frame.BorderSizePixel = 0
 frame.Parent = gui
