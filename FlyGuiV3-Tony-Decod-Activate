@@ -19,7 +19,7 @@ title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.Parent = frame
 
-local inputBox = Instance.new("TextBox")
+local inputBox = Instance.new("Press key...")
 inputBox.Size = UDim2.new(0.8, 0, 0, 30)
 inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
 inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
@@ -47,7 +47,7 @@ getKeyButton.Parent = frame
 
 getKeyButton.MouseButton1Click:Connect(function()
     local teleport = function()
-        game:GetService("GuiService"):OpenBrowserWindow("https://t.me/roblox_luas")
+        game:OpenURL("https://t.me/roblox_luas")
     end
     pcall(teleport)
 end)
