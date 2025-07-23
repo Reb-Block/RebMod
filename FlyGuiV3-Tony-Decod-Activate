@@ -1,0 +1,93 @@
+local player = game:GetService("Players").LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "TonyKeyCheck"
+gui.Parent = player:WaitForChild("PlayerGui")
+gui.ResetOnSpawn = false
+
+-- Центрированное окно
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+frame.AnchorPoint = Vector2.new(0.5, 0.5)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.BorderSizePixel = 0
+frame.Parent = gui
+
+-- Заголовок
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+title.BorderSizePixel = 0
+title.Text = "FlyGui V3 Decode By Tony"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+title.Parent = frame
+
+-- Поле ввода
+local inputBox = Instance.new("TextBox")
+inputBox.Size = UDim2.new(0.8, 0, 0, 30)
+inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+inputBox.BorderSizePixel = 0
+inputBox.PlaceholderText = "Press key..."
+inputBox.Text = ""
+inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+inputBox.Font = Enum.Font.SourceSans
+inputBox.TextSize = 16
+inputBox.Parent = frame
+
+-- Кнопка Check
+local checkButton = Instance.new("TextButton")
+checkButton.Size = UDim2.new(0.35, 0, 0, 30)
+checkButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+checkButton.BackgroundColor3 = Color3.fromRGB(50, 180, 50)
+checkButton.BorderSizePixel = 0
+checkButton.Text = "Check"
+checkButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+checkButton.Font = Enum.Font.SourceSansBold
+checkButton.TextSize = 16
+checkButton.Parent = frame
+
+-- Кнопка Get Key
+local getKeyButton = Instance.new("TextButton")
+getKeyButton.Size = UDim2.new(0.35, 0, 0, 30)
+getKeyButton.Position = UDim2.new(0.55, 0, 0.6, 0)
+getKeyButton.BackgroundColor3 = Color3.fromRGB(50, 150, 255)
+getKeyButton.BorderSizePixel = 0
+getKeyButton.Text = "Get Key"
+getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+getKeyButton.Font = Enum.Font.SourceSansBold
+getKeyButton.TextSize = 16
+getKeyButton.Parent = frame
+
+-- Функция для Get Key
+local function openLink()
+    local success = pcall(function()
+        game:GetService("GuiService"):OpenBrowserWindow("https://t.me/roblox_luas")
+    end)
+    
+    if not success then
+        local message = Instance.new("Message")
+        message.Text = "Скопируйте ссылку: https://t.me/roblox_luas"
+        message.Parent = player.PlayerGui
+        wait(3)
+        message:Destroy()
+    end
+end
+
+-- Проверка ключа и загрузка скрипта
+local function checkKey()
+    if inputBox.Text:upper() == "REBBLOCK" then
+        gui:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Reb-Block/RebMod/refs/heads/main/FlyGuiV3-Tony-Decoded"))()
+    else
+        inputBox.Text = ""
+        inputBox.PlaceholderText = "Wrong key! Try again"
+    end
+end
+
+-- Подключение кнопок
+checkButton.MouseButton1Click:Connect(checkKey)
+getKeyButton.MouseButton1Click:Connect(openLink)
