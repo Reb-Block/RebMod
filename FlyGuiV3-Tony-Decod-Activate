@@ -46,8 +46,12 @@ getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 getKeyButton.Parent = frame
 
 getKeyButton.MouseButton1Click:Connect(function()
-    setclipboard("https://t.me/roblox_luas")
-    getKeyButton.Text = "Copied Link!"
+    pcall(function()
+        setclipboard("https://t.me/roblox_luas")
+        getKeyButton.Text = "Copied Link!"
+        wait(1.5)
+        getKeyButton.Text = "Get Key"
+    end)
 end)
 
 checkButton.MouseButton1Click:Connect(function()
