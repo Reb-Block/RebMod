@@ -1,14 +1,14 @@
--- Код для проверки ключа
+-- Создаем GUI для проверки ключа (центрированный)
 local player = game.Players.LocalPlayer
 local gui = Instance.new("ScreenGui")
 gui.Name = "FlyGuiV3"
 gui.Parent = player:WaitForChild("PlayerGui")
 
--- Основной фрейм для проверки ключа (центрированный)
+-- Основной фрейм (точно по центру экрана)
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 200)
-frame.Position = UDim2.new(0.5, -150, 0.5, -100)  -- Центр экрана
-frame.AnchorPoint = Vector2.new(0.5, 0.5)  -- Важно для точного центрирования
+frame.Position = UDim2.new(0.5, 0, 0.5, 0) -- Центр экрана
+frame.AnchorPoint = Vector2.new(0.5, 0.5) -- Критически важно для центрирования
 frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 frame.BorderSizePixel = 0
 frame.Parent = gui
@@ -25,32 +25,38 @@ title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.Parent = frame
 
--- Поле для ввода
+-- Поле для ввода ключа
 local inputBox = Instance.new("TextBox")
 inputBox.Size = UDim2.new(0.8, 0, 0, 30)
 inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
 inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-inputBox.BorderSizePixel = 0
 inputBox.PlaceholderText = "Press key..."
 inputBox.Text = ""
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-inputBox.Font = Enum.Font.SourceSans
-inputBox.TextSize = 16
 inputBox.Parent = frame
 
--- Кнопка Check (зеленая)
+-- Зеленая кнопка Check
 local checkButton = Instance.new("TextButton")
 checkButton.Size = UDim2.new(0.35, 0, 0, 30)
 checkButton.Position = UDim2.new(0.1, 0, 0.6, 0)
 checkButton.BackgroundColor3 = Color3.fromRGB(50, 180, 50)
-checkButton.BorderSizePixel = 0
 checkButton.Text = "Check"
-checkButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-checkButton.Font = Enum.Font.SourceSansBold
-checkButton.TextSize = 16
 checkButton.Parent = frame
 
+-- Голубая кнопка Get Key (исправленная рабочая версия)
+local getKeyButton = Instance.new("TextButton")
+getKeyButton.Size = UDim2.new(0.35, 0, 0, 30)
+getKeyButton.Position = UDim2.new(0.55, 0, 0.6, 0)
+getKeyButton.BackgroundColor3 = Color3.fromRGB(50, 150, 255)
+getKeyButton.Text = "Get Key"
+getKeyButton.Parent = frame
 
+-- Функция для кнопки Get Key
+local function openLink()
+    pcall(function()
+        game:GetService("GuiService"):OpenBrowserWindow("https://t.me/roblox_luas")
+    end)
+end
 
 -- Функция для проверки ключа
 local function checkKey()
