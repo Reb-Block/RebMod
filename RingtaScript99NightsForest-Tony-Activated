@@ -1,1 +1,65 @@
+local player = game:GetService("Players").LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "TonyKeyCheck"
+gui.Parent = player:WaitForChild("PlayerGui")
 
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 200)
+frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+frame.AnchorPoint = Vector2.new(0.5, 0.5)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.Parent = gui
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+title.Text = "Ringta Script Decode By Tony"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+title.Parent = frame
+
+local inputBox = Instance.new("TextBox")
+inputBox.Size = UDim2.new(0.8, 0, 0, 30)
+inputBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+inputBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+inputBox.PlaceholderText = "Press key..."
+inputBox.Text = ""
+inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+inputBox.ClearTextOnFocus = false
+inputBox.Parent = frame
+
+local checkButton = Instance.new("TextButton")
+checkButton.Size = UDim2.new(0.35, 0, 0, 30)
+checkButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+checkButton.BackgroundColor3 = Color3.fromRGB(50, 180, 50)
+checkButton.Text = "Check"
+checkButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+checkButton.Parent = frame
+
+local getKeyButton = Instance.new("TextButton")
+getKeyButton.Size = UDim2.new(0.35, 0, 0, 30)
+getKeyButton.Position = UDim2.new(0.55, 0, 0.6, 0)
+getKeyButton.BackgroundColor3 = Color3.fromRGB(50, 150, 255)
+getKeyButton.Text = "Get Key"
+getKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+getKeyButton.Parent = frame
+
+getKeyButton.MouseButton1Click:Connect(function()
+    pcall(function()
+        setclipboard("https://t.me/roblox_luas")
+        getKeyButton.Text = "Copied Link!"
+        wait(1.5)
+        getKeyButton.Text = "Get Key"
+    end)
+end)
+
+checkButton.MouseButton1Click:Connect(function()
+    if string.upper(inputBox.Text) == "REBBLOCK" then
+        gui:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Reb-Block/RebMod/refs/heads/main/FlyGuiV3-Tony-Decoded", true))()
+    else
+        inputBox.Text = ""
+        inputBox.PlaceholderText = "Wrong key!"
+    end
+end)
