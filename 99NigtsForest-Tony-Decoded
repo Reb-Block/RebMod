@@ -7,7 +7,7 @@ local Workspace = game:GetService("Workspace")
 
 local Window = WindUI:CreateWindow({
     Folder = "Ringta Scripts",   
-    Title = "RINGTA SCRIPTS Decode By Tony",
+    Title = "RINGTA SCRIPTS",
     Icon = "star",
     Author = "ringta",
     Theme = "Dark",
@@ -565,3 +565,4 @@ Tabs.Misc:Button({
         end)
         print("✅ FPS Boost Applied")
     end
+})
