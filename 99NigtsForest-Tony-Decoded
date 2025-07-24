@@ -7,9 +7,9 @@ local Workspace = game:GetService("Workspace")
 
 local Window = WindUI:CreateWindow({
     Folder = "Ringta Scripts",   
-    Title = "RINGTA SCRIPTS",
+    Title = "RINGTA SCRIPTS | Decode By Tony",
     Icon = "star",
-    Author = "ringta",
+    Author = "Telegram: @roblox_luas",
     Theme = "Dark",
     Size = UDim2.fromOffset(500, 350),
     HasOutline = true,
